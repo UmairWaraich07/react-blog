@@ -1,4 +1,4 @@
-import { Client, Storage } from "appwrite";
+import { Client, ID, Storage } from "appwrite";
 import conf from "../conf/conf";
 
 class File {
@@ -14,7 +14,11 @@ class File {
 
   async uploadFile(file) {
     try {
-      return this.storage.createFile(conf.appwriteBucketId, ID.unique(), file);
+      return await this.storage.createFile(
+        conf.appwriteBucketId,
+        ID.unique(),
+        file
+      );
     } catch (error) {
       console.log(`Error while uploading file to APPWRITE storage : ${error}`);
       return false;

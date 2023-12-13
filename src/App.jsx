@@ -21,6 +21,7 @@ function App() {
           dispatch(logout());
         }
       })
+      .catch((error) => console.log(`Error in getting loggedInUser : ${error}`))
       .finally(() => setLoading(false));
   }, []);
   return !loading ? (
@@ -29,7 +30,6 @@ function App() {
         <Header />
         <main>
           <Outlet />
-          Lets go React.js
         </main>
         <Footer />
       </div>

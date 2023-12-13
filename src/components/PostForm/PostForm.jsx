@@ -7,6 +7,7 @@ import appwriteFile from "../../appwrite/file";
 import { useForm } from "react-hook-form";
 
 const PostForm = ({ post }) => {
+  console.log(post);
   const {
     register,
     handleSubmit,
@@ -27,8 +28,10 @@ const PostForm = ({ post }) => {
   const userData = useSelector((state) => state.auth.userData);
 
   const submit = async (data) => {
+    // console.log(data);
     if (post) {
       // update the edited data
+
       const file = data.image[0]
         ? await appwriteFile.uploadFile(data.image[0])
         : null;
@@ -42,6 +45,7 @@ const PostForm = ({ post }) => {
       if (uploadPost) navigate(`/post/${uploadPost.$id}`);
     } else {
       // create a new one
+      console.log(data.image[0]);
       const file = data.image[0]
         ? await appwriteFile.uploadFile(data.image[0])
         : null;

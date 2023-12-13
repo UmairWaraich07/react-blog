@@ -62,7 +62,7 @@ const Register = () => {
             <Input
               label="Name : "
               type="text"
-              placeHolder="Enter your name"
+              placeholder="Enter your name"
               {...register("name", {
                 required: "Name is required",
               })}
@@ -76,8 +76,8 @@ const Register = () => {
             <Input
               label="Email : "
               type="email"
-              placeHolder="Enter your email"
-              {...register("password", {
+              placeholder="Enter your email"
+              {...register("email", {
                 required: true,
                 pattern: {
                   value: emailRegex,

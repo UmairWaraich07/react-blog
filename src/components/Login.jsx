@@ -64,7 +64,7 @@ const Login = () => {
               type="email"
               label="Email: "
               placeholder="Enter your password"
-              {...register("password", {
+              {...register("email", {
                 required: true,
                 pattern: {
                   value: emailRegex,

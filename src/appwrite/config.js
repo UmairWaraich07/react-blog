@@ -36,7 +36,7 @@ class Service {
   async updatePost(slug, { title, content, featuredImage, status }) {
     try {
       return await this.databases.updateDocument(
-        conf.appwriteProjectId,
+        conf.appwriteDatabaseId,
         conf.appwriteCollectionId,
         slug,
         {

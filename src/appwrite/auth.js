@@ -34,7 +34,7 @@ class AuthService {
 
   async loginUser({ email, password }) {
     try {
-      return this.accountcreateEmailSession(email, password);
+      return this.account.createEmailSession(email, password);
     } catch (error) {
       console.log(`Error while logging user :: Appwrite : ${error}`);
       throw error;
@@ -52,10 +52,10 @@ class AuthService {
 
   async getLoggedInUser() {
     try {
-      return await this.get();
+      return await this.account.get();
     } catch (error) {
       console.log(`Error while getting loggedin user :: Appwrite : ${error}`);
-      throw error;
+      // throw error;
     }
     return null;
   }

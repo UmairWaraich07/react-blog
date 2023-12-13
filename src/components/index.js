@@ -9,6 +9,8 @@ import Footer from "./Footer/Footer";
 import Header from "./Header/Header";
 import RTE from "./RTE";
 import PostForm from "./PostForm/PostForm";
+import Container from "./Container/Container";
+import AuthLayout from "./AuthLayout";
 
 export {
   Button,
@@ -22,4 +24,6 @@ export {
   Header,
   RTE,
   PostForm,
+  Container,
+  AuthLayout,
 };

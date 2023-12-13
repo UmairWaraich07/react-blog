@@ -8,12 +8,11 @@ import LogoutBtn from "./Logout";
 const Header = () => {
   const authStatus = useSelector((state) => state.auth.status);
   const navigate = useNavigate();
-  console.log(authStatus);
 
   const navItems = [
     {
       name: "Home",
-      slug: "/home",
+      slug: "/",
       active: true,
     },
 
@@ -24,7 +23,7 @@ const Header = () => {
     },
     {
       name: "Add Post",
-      slug: "/addpost",
+      slug: "/add-post",
       active: authStatus,
     },
     {
