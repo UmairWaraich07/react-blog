@@ -6,8 +6,7 @@ import appwriteService from "../../appwrite/config";
 import appwriteFile from "../../appwrite/file";
 import { useForm } from "react-hook-form";
 
-const PostForm = ({ post }) => {
-  console.log(post);
+const PostForm = ({ post, slug }) => {
   const {
     register,
     handleSubmit,
@@ -18,10 +17,10 @@ const PostForm = ({ post }) => {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      title: post?.title || "",
-      content: post?.content || "",
-      slug: post?.slug || "",
-      status: post?.status || "active",
+      title: post ? post.title : "",
+      content: post ? post.content : "",
+      slug: post ? post.slug : "",
+      status: post ? post.status : "",
     },
   });
   const navigate = useNavigate();
@@ -84,6 +83,16 @@ const PostForm = ({ post }) => {
 
     return () => subscription.unsubscribe;
   }, [watch, transformSlug, setValue]);
+
+  useEffect(() => {
+    if (post) {
+      setValue("title", post.title);
+      setValue("content", post.content);
+      setValue("status", post.status);
+
+      setValue("slug", slug);
+    }
+  }, [post, setValue]);
   return (
     <form onSubmit={handleSubmit(submit)} className="flex flex-wrap">
       <div className="w-2/3 px-2">
@@ -143,7 +152,9 @@ const PostForm = ({ post }) => {
           {post && (
             <div className="w-full mb-4">
               <img
-                src={appwriteFile.getFilePreview(post.featuredImage)}
+                src={
+                  post ? appwriteFile.getFilePreview(post.featuredImage) : null
+                }
                 alt={post.title}
                 className="rounded-lg"
               />
